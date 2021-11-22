@@ -58,6 +58,10 @@ header {
     background-color:lightgrey;
 }
 
+.center>* {
+    display:block;
+}
+
 .calendar>table {
     height:calc(100% - 4em);
     width:calc(85% - 2px);

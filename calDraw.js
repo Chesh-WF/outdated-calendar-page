@@ -25,10 +25,6 @@ function setCalendar() {
     var currMonthStart = currDate.getDay();
     var currMonthOffset = currDate.getDate() % 7;
 
-
-    console.log(currMonthStart);
-    console.log(currMonthOffset);
-
     while(currMonthOffset > 0) {
         currMonthStart--;
         currMonthOffset--;
@@ -37,14 +33,17 @@ function setCalendar() {
         currMonthStart += 7;
     }
 
-    console.log(currMonthStart);
-    console.log(currMonthOffset);
-
-    daysArr.forEach((x) => {x.innerHTML = "";});
+    //remove current stuff attached to all days
+    daysArr.forEach((x) => {
+        x.innerHTML = "";
+        x.removeEventListener("click", onDayClick)
+    });
     
-    //adding in day numbers
+    //adding in day numbers + event listeners
     for(let i = currMonthStart; i < monthDayCount[currDate.getMonth()] + currMonthStart; i++) {
         daysArr[i].innerHTML = (i - currMonthStart + 1).toString();
+        daysArr[i].addEventListener("click", onDayClick)
+        
     }
 }
 
@@ -68,11 +67,9 @@ function onLastMonthClick() {
     }
 
     setCalendar();
-
 }
 
-
-
-
-
-
+function onDayClick() {
+    //PLACEHOLDER FOR EVENT VIEWING FUNCTIONALITY
+    console.log(this.innerHTML);
+}
