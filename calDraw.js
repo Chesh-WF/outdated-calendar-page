@@ -5,10 +5,6 @@ var currDate = new Date();
 // currDate = new Date(2026, 10, 30);
 
 var monthDayCount = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-if(currDate.getFullYear() % 4 == 0 && currDate.getFullYear() % 100 != 0 ||
-    currDate.getFullYear() % 400 == 0) {
-    monthDayCount[1] = 29;
-}
 
 //populate the calendar with cells, each with a section for day number and events
 var calTable = document.querySelector(".calendar>table")
@@ -54,6 +50,12 @@ function setCalendar() {
     if(currMonthStart < 0) {
         currMonthStart += 7;
     }
+
+    //adjust for a leap year
+    if(currDate.getFullYear() % 4 == 0 && currDate.getFullYear() % 100 != 0 ||
+    currDate.getFullYear() % 400 == 0) {
+    monthDayCount[1] = 29;
+    }   
 
     //remove current stuff attached to all days
     daysArr.forEach((x) => {

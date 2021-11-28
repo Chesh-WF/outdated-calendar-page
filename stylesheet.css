@@ -1,7 +1,12 @@
 /* * {border:1px dashed black}*:hover {border:1px solid red} */
 /* DONT LEAVE THIS IN THE FINAL CODE */
 
-html,body {height:100%;display: flex;flex-direction: column; overflow: hidden}
+html,body {
+    height:100%;
+    display: flex;
+    flex-direction: column
+    ; overflow: hidden
+}
 * {padding: 0; margin: 0}
 
 body {
