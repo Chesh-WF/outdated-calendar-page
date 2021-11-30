@@ -67,11 +67,39 @@ function setCalendar() {
     //adding in day numbers + event listeners
     for(let i = currMonthStart; i < monthDayCount[currDate.getMonth()] + currMonthStart; i++) {
         daysArr[i].childNodes[0].innerHTML = (i - currMonthStart + 1).toString();
+        daysArr[i].addEventListener("click", onDayClick);
 
-        //TODO : ajax request for event information to be put here
-        //there probably needs to be separate divs for each event so that needs to be handled
-        //daysArr[i].childNodes[1].innerHTML = 
-        daysArr[i].addEventListener("click", onDayClick)
+        //ajax request:
+        // var xhr= new XMLHttpRequest();
+        // xhr.onreadystatechange = function() {  
+        //     var DONE = 4; // readyState 4 means the request is done.
+        //     var OK = 200; // status 200 is a successful return.               
+        //     if (xhr.readyState === DONE) { 
+        //         if (xhr.status === OK) {
+        //             console.log(xhr.responseText);
+        //             if(xhr.responseText != "") {
+        //                 //
+        //             } else {
+        //                 alert("Something has gone wrong!")
+        //             }
+        //         } else {
+        //             console.log('Error: ' + xhr.status);
+        //         }
+        //     }
+        // }
+
+        // //TODO: get all the fields we need to query the database for each day's events
+        //     //we might want to put this outside the for-loop so each month only gets one query for all the events
+        // // var queryString = "?table=" + this.parentElement.getAttribute("name");
+        // // for(i of currFields) {
+        // //     queryString += ("&" + i.getAttribute("placeholder") + "=" + escape(i.value));
+        // // }
+
+        // console.log(queryString);
+
+        // //TODO: rename the php file to whatever we use
+        // //xhr.open("GET", "insert.php" + queryString, true);
+        // xhr.send();   
 
     }
 }
